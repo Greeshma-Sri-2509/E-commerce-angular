@@ -1,0 +1,100 @@
+<div class="header">
+  <ul class="category-nav">
+    @for(category of categories(); track category) {
+    <li class="category-item" (mouseenter)="onMouseEnter(category)" (mouseleave)="onMouseLeave()">
+      <a [class.active]="selectedCategory() === category" (click)="changeCategory(category)">
+        {{ category }}
+      </a>
+      @if(hoveredCategory() === category && category !=="All") {
+      <div class="sub-menu" (mouseenter)="onMouseEnter(category)" (mouseleave)="onMouseLeave()">
+        @for(subCategory of hoverSubCategories(); track subCategory) {
+        <div class="sub-category" (click)="changeSubCategory(subCategory)">
+          {{ subCategory }}
+        </div>
+        }
+      </div>
+      }
+    </li>
+    }
+  </ul>
+  <ul class="sort-nav">
+    <li class="sort-item" (mouseenter)="showSortMenu = true" (mouseleave)="showSortMenu = false">
+      <a>Sort By</a>
+      @if(showSortMenu) {
+      <div class="sort-menu">
+
+        <div class="sort-option" (click)="changeSort('default')">
+          Default
+        </div>
+
+        <div class="sort-option" (click)="changeSort('low')">
+          Price: Low to High
+        </div>
+
+        <div class="sort-option" (click)="changeSort('high')">
+          Price: High to Low
+        </div>
+
+        <div class="sort-option" (click)="changeSort('az')">
+          Name: A-Z
+        </div>
+
+        <div class="sort-option" (click)="changeSort('za')">
+          Name: Z-A
+        </div>
+
+      </div>
+      }
+    </li>
+  </ul>
+  <input type="text" placeholder="Search products" (input)="search($event)">
+</div>
+
+
+<div class="container">
+
+  @for(product of paginatedProducts();track product.id){
+  <div class="card">
+    <span class="wishlist-icon" [class.wishlisted]="wishlistStore.isWishlisted(product.id)"
+      (click)="toggleWishlist(product)" title="Add to Wishlist">
+
+      {{ wishlistStore.isWishlisted(product.id) ? '♥' : '♡' }}
+
+    </span>
+    <img [src]="product.image" [alt]="product.productName">
+    <h3>{{product.productName}}</h3>
+    <h4>₹{{product.price}}</h4>
+    <button (click)="viewDetails(product.id)">
+      View Details
+    </button>
+
+
+    @if(getCartItems(product.id); as cartItems){
+
+    <div class="quantity">
+
+      <button (click)="decreaseItem(product.id)">-</button>
+
+      <span>{{ cartItems.quantity }}</span>
+
+      <button (click)="increaseItem(product.id)">+</button>
+
+    </div>
+
+    } @else {
+
+    <button (click)="addProduct(product)">
+      Add to Cart
+    </button>
+
+    }
+
+  </div>
+  }
+
+</div>
+<div class="d-flex justify-content-center align-items-center gap-3 mt-4">
+  <button class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage()===1">Previous</button>
+  <span>{{currentPage()}} of {{totalPages()}}</span>
+  <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage()===totalPages()">Next</button>
+</div>

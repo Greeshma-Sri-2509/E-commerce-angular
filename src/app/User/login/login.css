@@ -1,0 +1,45 @@
+.container{
+    max-width: 1200px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    object-fit: contain;
+}
+.card{
+    box-shadow: rgb(217, 216, 216);
+    padding: 20px 20px 10px 10px;
+    margin: auto;
+    border-radius: 15px;
+    
+}
+.card h2{
+    margin-bottom: 35px;
+    color: rgba(0, 0, 0, 0.789);
+    font-size: 40px;
+    font-weight: 400;
+}
+.card input{
+    padding: 8px 12px;
+    margin: 20px 20px 10px 10px;
+    border-radius: 10px;
+
+}
+.card button{
+    padding: 8px 12px;
+    margin: 20px 20px 10px 10px;
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
+}
+.card button:hover{
+    transition: 0.2s;
+    background-color: blue;
+}
+ .card .error small{
+    padding: 20px 20px 10px 10px;
+    font-size: 12px;
+} 

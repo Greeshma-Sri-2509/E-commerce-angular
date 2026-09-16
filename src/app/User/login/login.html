@@ -1,0 +1,36 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <h2 class="text-center">Login</h2> 
+                        <input type="email" class="form-control" placeholder="Email" formControlName="email" [class.is-invalid]="email?.invalid && email?.touched">
+                        @if(email?.invalid && email?.touched){
+                            <div class="error">
+                                @if(email?.errors?.['required']){
+                                    <small class="text-danger">Please enter your email</small>
+                                }
+                                @if(email?.errors?.['email']){
+                                    <small class="text-danger">Invalid format</small>
+                                }
+                            </div>
+                        }
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password" [class.is-invalid]="password?.invalid && password?.touched">
+                         @if(password?.invalid && password?.touched){
+                            <div class="error">
+                                @if(password?.errors?.['required']){
+                                    <small class="text-danger">Please enter your password</small>
+                                }
+                                @if(password?.errors?.['minlength']){
+                                    <small class="text-danger">Password must contains minimum 6 characters</small>
+                                }
+                            </div>
+                        }
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

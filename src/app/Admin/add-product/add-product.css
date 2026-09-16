@@ -1,0 +1,12 @@
+
+.error{
+    display: flex;
+    color: rgb(193, 28, 28);
+    font-size: medium;
+}
+div label{
+    font-size: large;
+    color: black;
+
+}
+

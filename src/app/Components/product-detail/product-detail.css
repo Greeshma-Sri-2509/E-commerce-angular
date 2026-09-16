@@ -1,0 +1,145 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.product-detail {
+  position: relative;
+  width: 500px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+/* Wishlist */
+.wishlist-icon {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+
+  font-size: 30px;
+  cursor: pointer;
+
+  color: #777;
+  transition: 0.2s;
+}
+
+.wishlist-icon:hover {
+  transform: scale(1.2);
+}
+
+.wishlist-icon.wishlisted {
+  color: red;
+}
+
+/* Product Image */
+.product-detail img {
+  display: block;
+  width: 70%;
+  height: 300px;
+  object-fit: contain;
+  margin: 20px auto;
+}
+
+/* Product Name */
+.product-detail h1 {
+  margin: 15px 0;
+  font-size: 28px;
+  color: #222;
+}
+
+/* Price */
+.product-detail p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e63946;
+  margin-bottom: 25px;
+}
+
+/* Quantity */
+.quantity-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.quantity-button button {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 20px;
+
+  background: #1c4cea;
+  color: white;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.quantity-button button:hover {
+  background: #f5f6f7;
+  color: #1c4cea;
+  font-weight: 600;
+}
+
+.quantity-button span {
+  min-width: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Add to Cart */
+.product-detail > button {
+  padding: 12px 30px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #0d6efd;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.product-detail > button:hover {
+  background: #0b5ed7;
+  transform: translateY(-2px);
+}
+
+/* Product not found */
+.container + h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+
+  .container {
+    padding: 25px 15px;
+  }
+
+  .product-detail {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .product-detail img {
+    width: 80%;
+    height: 220px;
+  }
+
+  .product-detail h1 {
+    font-size: 24px;
+  }
+}

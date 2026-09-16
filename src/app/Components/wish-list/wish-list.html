@@ -1,0 +1,65 @@
+<div class="container mt-4">
+
+  <h2 class="mb-4">My Wishlist</h2>
+
+  @if(wishlistItems().length === 0) {
+
+    <div class="alert alert-info">
+      Your wishlist is empty.
+    </div>
+
+  } @else {
+
+    <div class="row">
+
+      @for(product of wishlistItems(); track product.id) {
+
+        <div class="col-md-4 mb-4">
+
+          <div class="card h-100 shadow-sm">
+
+            <img
+              [src]="product.image"
+              [alt]="product.productName"
+              class="card-img-top"
+            >
+
+            <div class="card-body">
+
+              <h5 class="card-title">
+                {{ product.productName }}
+              </h5>
+
+              <p class="card-text">
+                ₹{{ product.price }}
+              </p>
+
+              <div class="wishlist-buttons">
+
+                <button
+                  class="btn btn-primary"
+                  (click)="addToCart(product)">
+                  Add to Cart
+                </button>
+
+                <button
+                  class="btn btn-danger"
+                  (click)="removeFromWishlist(product.id)">
+                  Remove
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</div>

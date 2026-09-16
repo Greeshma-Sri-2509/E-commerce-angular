@@ -1,0 +1,130 @@
+<div class="container mt-4">
+
+  @if(order){
+
+    <div class="card shadow">
+
+      <div class="card-header d-flex justify-content-between">
+
+        <h4>Order Details</h4>
+
+        <span
+          class="badge"
+          [class.bg-danger]="order.status === 'Cancelled'"
+          [class.bg-success]="order.status === 'Confirmed'"
+          [class.bg-warning]="order.status === 'Shipped'"
+          [class.bg-info]="order.status === 'Delivered'">
+
+          {{ order.status }}
+
+        </span>
+
+      </div>
+
+      <div class="card-body">
+
+        <p>
+          <strong>Order ID:</strong>
+          {{ order.id }}
+        </p>
+
+        <p>
+          <strong>Order Date:</strong>
+          {{ order.orderDate | date:'medium' }}
+        </p>
+
+        <p>
+          <strong>Payment Method:</strong>
+          {{ order.paymentMethod }}
+        </p>
+
+        <hr>
+
+        <h5>Products</h5>
+
+        @for(item of order.items; track item.id){
+
+          <div class="d-flex justify-content-between mb-2">
+
+            <span>
+              {{ item.productName }} × {{ item.quantity }}
+            </span>
+
+            <span>
+              ₹{{ item.price * item.quantity }}
+            </span>
+
+          </div>
+
+        }
+
+        <hr>
+
+        <div class="d-flex justify-content-between">
+
+          <strong>Total Quantity</strong>
+
+          <strong>
+            {{ order.totalQuantity }}
+          </strong>
+
+        </div>
+
+        <div class="d-flex justify-content-between mt-2">
+
+          <strong>Total Price</strong>
+
+          <strong>
+            ₹{{ order.totalPrice }}
+          </strong>
+
+        </div>
+
+        <hr>
+
+        <h5>Delivery Address</h5>
+
+        <p>
+          <strong>Name:</strong>
+          {{ order.customer.name }}
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          {{ order.customer.phone }}
+        </p>
+
+        <p>
+          <strong>Address:</strong>
+          {{ order.customer.address }}
+        </p>
+
+        <p>
+          <strong>City:</strong>
+          {{ order.customer.city }}
+        </p>
+
+        <p>
+          <strong>State:</strong>
+          {{ order.customer.state }}
+        </p>
+
+        <p>
+          <strong>Pincode:</strong>
+          {{ order.customer.pincode }}
+        </p>
+        <button class="btn" (click)="goBack()">Go Back</button>
+      </div>
+
+    </div>
+
+  } @else {
+
+    <div class="alert alert-danger">
+      Order not found.
+    </div>
+
+  }
+  
+
+</div>

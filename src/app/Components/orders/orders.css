@@ -1,0 +1,244 @@
+/* =========================
+   Orders Container
+========================= */
+
+.container {
+    max-width: 900px;
+}
+
+
+/* =========================
+   Order Card
+========================= */
+
+.container > .card {
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    overflow: hidden;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+
+    transition: 0.2s ease;
+}
+
+.container > .card:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   Order Header
+========================= */
+
+.card-header {
+    background-color: #f8f9fa;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.card-header strong {
+    font-size: 16px;
+}
+
+.card-header .badge {
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+
+/* Shipped badge */
+
+.badge.bg-warning {
+    color: #212529;
+}
+
+
+/* =========================
+   Order Information
+========================= */
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body p {
+    color: #555;
+}
+
+.card-body p strong {
+    color: #212529;
+    margin-right: 5px;
+}
+
+
+/* =========================
+   Products
+========================= */
+
+.container > .card > h5 {
+    margin: 15px 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.container > .card > .d-flex {
+    margin: 0 20px 10px;
+    padding: 12px 15px;
+
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.container > .card > .d-flex span:first-child {
+    font-weight: 500;
+    color: #343a40;
+}
+
+.container > .card > .d-flex span:last-child {
+    font-weight: 600;
+}
+
+
+/* =========================
+   Buttons
+========================= */
+
+
+
+.container .card .detail{
+   display: inline-flex;
+   justify-content: space-between;
+   margin: 20px 20px;
+   border-radius: 20px;
+   padding: 15px 8px; 
+    
+}
+.container .card .detail .btn-info{
+    background-color: rgb(7, 178, 251);
+    color: white;
+    font-weight: 500;
+    
+}
+.container .card .detail .btn-info:hover{
+    transform: translateY(0.5s);
+    background-color: white;
+    color: rgb(7, 178, 251);
+}
+.container .card .detail .btn-danger{
+    background-color: crimson;
+    color: white;
+    font-weight: 500;
+}
+.container .card .detail .btn-danger:hover{
+    transform: translateY(0.5s);
+    background-color: white;
+    color: crimson;
+}
+
+
+/* =========================
+   Divider
+========================= */
+
+.container > .card hr {
+    margin: 15px 20px;
+    border: 0;
+    border-top: 1px solid #dee2e6;
+}
+
+
+/* =========================
+   Delivery Address
+========================= */
+
+.card.mt-3 {
+    max-width: 900px;
+    margin: 25px auto !important;
+
+    border: none;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+.card.mt-3 .card-body {
+    padding: 25px;
+}
+
+.card.mt-3 h5 {
+    margin-bottom: 20px;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card.mt-3 p {
+    color: #555;
+}
+
+.card.mt-3 p strong {
+    color: #212529;
+}
+
+
+/* =========================
+   Empty Orders
+========================= */
+
+.alert-info {
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 576px) {
+
+    .container {
+        width: 95%;
+    }
+
+    .card-header {
+        padding: 14px 15px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .container > .card > h5 {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .container > .card > .d-flex {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    /* Buttons */
+
+    .container > .card > .btn-info {
+        margin-left: 15px;
+    }
+
+    .container > .card > .btn-danger {
+        margin-left: 5px;
+    }
+
+    /* Product row */
+
+    .container > .card > .d-flex {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}

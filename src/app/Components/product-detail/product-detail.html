@@ -1,0 +1,45 @@
+@if(product){
+<div class="container">
+
+    <div class="product-detail">
+
+        <span class="wishlist-icon"
+              [class.wishlisted]="wishlistStore.isWishlisted(product.id)"
+              (click)="toggleWishlist(product)"
+              title="Add to Wishlist">
+
+            {{ wishlistStore.isWishlisted(product.id) ? '♥' : '♡' }}
+
+        </span>
+
+        <img [src]="product.image"
+             alt="{{ product.productName }}"
+             width="50%">
+
+        <h1>{{ product.productName }}</h1>
+
+        <p>Price: ₹{{ product.price }}</p>
+
+        @if(getCartItems(product.id); as cartItems){
+            <div class="quantity-button">
+            <button (click)="decreaseItem(product.id)">-</button>
+
+            <span>{{ cartItems.quantity }}</span>
+
+            <button (click)="increaseItem(product.id)">+</button>
+            </div>
+
+        }
+
+            <button (click)="addProduct(product)">
+                Add to Cart
+            </button>
+
+        
+
+    </div>
+</div>
+}
+@else {
+    <h1>Product Not Found</h1>
+}

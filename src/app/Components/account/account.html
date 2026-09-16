@@ -1,0 +1,44 @@
+<div class="account-page">
+
+  <!-- Sidebar -->
+  <aside class="account-sidebar">
+
+    <a
+      routerLink="/account/profile"
+      routerLinkActive="active">
+      <span>👤</span>
+      Profile
+    </a>
+
+    <a
+      routerLink="/account/orders"
+      routerLinkActive="active">
+      <span>📦</span>
+      Orders
+    </a>
+
+    <a
+      routerLink="/account/wishlist"
+      routerLinkActive="active">
+      <span>♡</span>
+      Wishlist
+    </a>
+
+    <button
+      type="button"
+      (click)="logout()">
+      <span>↪</span>
+      Logout
+    </button>
+
+  </aside>
+
+
+  <!-- Main Content -->
+  <main class="account-content">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

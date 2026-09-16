@@ -1,0 +1,107 @@
+<div class="card shadow">
+    <div class="card-body">
+        <form [formGroup]="productForm" (ngSubmit)="submit()">
+            <label>Product name:</label>
+            <input class="form-control" formControlName="productName"
+                [class.is-invalid]="productName.invalid && productName.touched">
+            @if(productName.invalid && productName.touched){
+            <div class="error">
+                @if(productName.errors?.['required']){
+                <small class="error">Please enter product name</small>
+                }
+
+            </div>
+            }
+            <label>Brand:</label>
+            <input class="form-control" formControlName="brand" [class.is-invalid]="brand.invalid && brand.touched">
+            @if(brand.invalid && brand.touched){
+            <div class="error">
+                @if(brand.errors?.['required']){
+                <small class="error">Please enter product brand</small>
+                }
+
+            </div>
+            }
+            <label>Product description:</label>
+            <input class="form-control" formControlName="description"
+                [class.is-invalid]="description.invalid && description.touched">
+            @if(description.invalid && description.touched){
+            <div class="error">
+                @if(description.errors?.['required']){
+                <small class="error">Please enter product description</small>
+                }
+            </div>
+            }
+            <label>Price:</label>
+            <input class="form-control" formControlName="price" [class.is-invalid]="price.invalid && price.touched">
+            @if(price.invalid && price.touched){
+            <div class="error">
+                @if(price.errors?.['required']){
+                <small class="error">Please enter product price</small>
+                }
+                @if(price.errors?.['pattern']){
+                <small class="error">Price should contains only digits</small>
+                }
+
+            </div>
+            }
+            <label>Category:</label>
+            <select class="form-select" (change)="onChangeCategory()" formControlName="category"
+                [class.is-invalid]="category.invalid && category.touched">
+                <option [value]="">Select Category</option>
+                @for(category of categories; track category){
+                <option [value]="category.name">{{category.name}}</option>
+                }
+            </select>
+            @if(category.invalid && category.touched){
+            <div class="error">
+                @if(category.errors?.['required']){
+                <small class="error">Please select category</small>
+                }
+            </div>
+            }
+            <label>Sub-Category:</label>
+            <select class="form-select" formControlName="subCategory"
+                [class.is-invalid]="subCategory.invalid && subCategory.touched">
+                <option [value]="">Select Sub-Category</option>
+                @for(subCategory of subCategories; track subCategory){
+                <option [value]="subCategory">{{subCategory}}</option>
+                }
+            </select>
+            @if(subCategory.invalid && subCategory.touched){
+            <div class="error">
+                @if(subCategory.errors?.['required']){
+                <small class="error">Please select sub-category</small>
+                }
+            </div>
+            }
+            <label>Stock:</label>
+            <input class="form-control" formControlName="stock" [class.is-invalid]="stock.invalid && stock.touched">
+            @if(stock.invalid && stock.touched){
+            <div class="error">
+                @if(stock.errors?.['required']){
+                <small class="error">Please enter product stock</small>
+                }
+                @if(stock.errors?.['pattern']){
+                <small class="error">Stock should not contains letters and special characters</small>
+                }
+            </div>
+            }
+            <label>Image URL:</label>
+            <input class="form-control" formControlName="image" [class.is-invalid]="image.invalid && image.touched">
+            @if(image.invalid && image.touched){
+            <div class="error">
+                @if(image.errors?.['required']){
+                <small class="error">Please enter product image</small>
+                }
+                @if(image.errors?.['pattern']){
+                <small class="error">Invalid image pattern</small>
+                }
+            </div>
+            }
+            <div class="btn">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

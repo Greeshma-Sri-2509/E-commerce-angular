@@ -1,0 +1,101 @@
+<div class="container mt-4">
+    <h2 class="mb-4" id="orders-heading">Order Management</h2>
+    <div class="sr-only" role="status" aria-live="polite" id="status-messages"></div>
+    @if(orders().length === 0) {
+    <div class="alert alert-info">
+        No orders found.
+    </div>
+    } @else {
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" aria-labelledby="orders-heading">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(order of orders(); track order.id) {
+                <tr>
+                    <td>
+                        {{ order.id }}
+                    </td>
+                    <td>
+                        {{ order.customer.name }}
+                    </td>
+                    <td>
+                        {{ order.customer.phone }}
+                    </td>
+                    <td>
+                        ₹{{ order.totalPrice }}
+                    </td>
+                    <td>
+                        {{ order.paymentMethod }}
+                    </td>
+                    <td>
+                        {{ order.orderDate | date:'medium' }}
+                    </td>
+                    <td>
+                        <span class="badge" [class.bg-danger]="order.status === 'Cancelled'"
+                            [class.bg-success]="order.status === 'Confirmed'"
+                            [class.bg-warning]="order.status === 'Shipped'"
+                            [class.bg-info]="order.status === 'Delivered'"
+                            [attr.aria-label]="getStatusAriaLabel(order.id, order.status)"
+                            role="status">
+                            {{ order.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <label [for]="'status-select-' + order.id" class="form-label d-block mb-2">
+                           
+                        </label>
+                        <select [id]="'status-select-' + order.id"
+                            class="form-select form-select-sm" 
+                            [value]="order.status"
+                            (change)="updateOrderStatus(order.id, $any($event.target).value)"
+                            [disabled]="order.status === 'Cancelled'"
+                            [attr.aria-label]="getStatusSelectLabel(order.id)"
+                            aria-describedby="status-instructions">
+                            <option value="" disabled>-- Select Status --</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+</div>
+
+<div class="sr-only" id="status-instructions">
+    Use the status dropdown to update an order's current status. You can change Confirmed orders to Shipped or Cancelled, Shipped orders to Delivered or Cancelled, and Delivered orders to Cancelled.
+</div>
+
+<style>
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    
+    .form-label {
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+</style>
