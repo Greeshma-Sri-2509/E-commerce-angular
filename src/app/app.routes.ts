@@ -16,6 +16,7 @@ import { Checkout } from './Components/checkout/checkout';
 import { OrderDetails } from './Components/order-details/order-details';
 import { AdminOrders } from './Admin/admin-orders/admin-orders';
 import { Login } from './User/login/login';
+import { OrderStatusChart } from './order-status-chart/order-status-chart';
 
 
 export const routes: Routes = [
@@ -60,6 +61,9 @@ export const routes: Routes = [
             },
             {
                 path:'orders', component:AdminOrders
+            },
+            {
+                path:'order-status', component:OrderStatusChart
             }
         ]
     },

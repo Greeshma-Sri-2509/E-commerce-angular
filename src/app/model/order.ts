@@ -1,5 +1,5 @@
 import { CartItem } from "./cart-items";
-
+export type OrderStatus = | 'Shipping' | 'Confirmed' | 'Delivered' | 'Cancelled';
 export interface Order {
     id: number;
     items: CartItem[];
@@ -17,5 +17,5 @@ export interface Order {
     totalPrice: number
 
     orderDate: string;
-    status: string
+    status: OrderStatus
 }

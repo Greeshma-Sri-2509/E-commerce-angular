@@ -44,7 +44,7 @@
                     <td>
                         <span class="badge" [class.bg-danger]="order.status === 'Cancelled'"
                             [class.bg-success]="order.status === 'Confirmed'"
-                            [class.bg-warning]="order.status === 'Shipped'"
+                            [class.bg-warning]="order.status === 'Shipping'"
                             [class.bg-info]="order.status === 'Delivered'"
                             [attr.aria-label]="getStatusAriaLabel(order.id, order.status)"
                             role="status">
@@ -64,7 +64,7 @@
                             aria-describedby="status-instructions">
                             <option value="" disabled>-- Select Status --</option>
                             <option value="Confirmed">Confirmed</option>
-                            <option value="Shipped">Shipped</option>
+                            <option value="Shipping">Shipping</option>
                             <option value="Delivered">Delivered</option>
                             <option value="Cancelled">Cancelled</option>
                         </select>

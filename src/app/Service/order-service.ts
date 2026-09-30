@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Order } from '../model/order';
+import { Order, OrderStatus } from '../model/order';
 
 @Injectable({
   providedIn: 'root'
@@ -41,40 +41,43 @@ export class OrderService {
     });
 
   }
-  cancelOrder(id: number){
-    this.orders.update(order=>{
-      const updatedOrders = order.map(order=>
-        order.id ===id
-        ?
-        {
-          ...order,
-          status: 'Cancelled'
-        }
-        : order
+  cancelOrder(id: number) {
+    this.orders.update(orders => {
+      const updatedOrders = orders.map(order =>
+        order.id === id
+          ? {
+              ...order,
+              status: 'Cancelled' as Order['status']
+            }
+          : order
       );
+
       localStorage.setItem(
         this.storageKey,
         JSON.stringify(updatedOrders)
-      )
-      return updatedOrders
-    })
-  }
-  updateStatus(id: number, status: string){
-    this.orders.update(order=>{
-      const updatedOrder= order.map(order=>
-        order.id===id
-        ?
-        {
-          ...order,
-          status: status
-        }
-        : order
       );
+
+      return updatedOrders;
+    });
+  }
+
+  updateStatus(id: number, status: OrderStatus) {
+    this.orders.update(orders => {
+      const updatedOrders = orders.map(order =>
+        order.id === id
+          ? {
+              ...order,
+              status
+            }
+          : order
+      );
+
       localStorage.setItem(
         this.storageKey,
-        JSON.stringify(updatedOrder)
-      )
-      return updatedOrder
-    })
+        JSON.stringify(updatedOrders)
+      );
+
+      return updatedOrders;
+    });
   }
 }

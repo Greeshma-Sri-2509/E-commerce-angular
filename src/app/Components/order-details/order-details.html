@@ -12,7 +12,7 @@
           class="badge"
           [class.bg-danger]="order.status === 'Cancelled'"
           [class.bg-success]="order.status === 'Confirmed'"
-          [class.bg-warning]="order.status === 'Shipped'"
+          [class.bg-warning]="order.status === 'Shipping'"
           [class.bg-info]="order.status === 'Delivered'">
 
           {{ order.status }}

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { OrderService } from '../../Service/order-service';
 import { DatePipe } from '@angular/common';
+import { OrderStatus } from '../../model/order';
 
 @Component({
   selector: 'app-admin-orders',
@@ -27,7 +28,7 @@ export class AdminOrders {
     return `Change status for order ${orderId}`
   }
 
-  updateOrderStatus(id: number, status: string){
+  updateOrderStatus(id: number, status: OrderStatus){
     this.orderService.updateStatus( id, status )
   }
 }
